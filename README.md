@@ -53,7 +53,7 @@ sudo apt-get -y install libvirt-dev
 ```
 ***Windows***
 - Install vagrant for windows https://www.vagrantup.com/downloads
-- For WSL1 users, export or add these commands to your shell (~/.bashrc or ~/.zshrc)
+For WSL1 users, export or add these commands to your shell (~/.bashrc or ~/.zshrc)
 ```bash
 export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
