@@ -50,15 +50,15 @@ sudo apt-get -y install libvirt-dev
 ```
 ***Windows***
 - Install vagrant for windows https://www.vagrantup.com/downloads
-- for WSL users, export or add these commands to the bottom of your shell (~/.bashrc or ~/.zshrc)
+- For WSL1 users, export or add these commands to the bottom of your shell (~/.bashrc or ~/.zshrc)
 ```bash
 export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 ```
 - Then, reboot your machine.
 
-Note: Unfortunately, WSL2 and Hyper-V are not compatible with Vagrant.<br>
-you'll have to disable WSL2+ Hyper-V and revert your WSL distribution to WSL1
+Note: Unfortunately, WSL2 is compatible with Vagrant. you'll have to disable WSL2+ Hyper-V and revert your WSL distribution to WSL1
+
 
 **2. Check** : In your HOME dir, create a new VirtualBox VM
 ```bash
@@ -67,7 +67,7 @@ vagrant init alpine/alpine64
 vagrant up
 ```
 &nbsp;
-## 3. Kubernetes installation
+## 3. Build your kubernetes cluster
 **1. Copy these manifests to your working Dir**  
 ```
 git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
