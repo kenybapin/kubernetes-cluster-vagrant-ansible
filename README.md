@@ -36,6 +36,7 @@ $ ansible --version
 - hosts: localhost
   tasks:
     - debug: msg="Ansible is working!"
+    
 
   2.2 Run the playbook
 
@@ -72,7 +73,7 @@ $ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 
 2. Check installation
 
-Create a new VirtualBox VM
+# Create a new VirtualBox VM
 
 $ vagrant --version
 $ vagrant init alpine/alpine64
