@@ -62,7 +62,7 @@ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 
 <sup>**Unfortunately, WSL2 is not yet compatible with Vagrant. You'll have to disable WSL2 + Hyper-V, then revert your WSL dist. to WSL1**<sup><br>
 
-**2. Check** : In your HOME dir, create a new VirtualBox VM
+**2. Check** : Create a new VirtualBox VM
 ```bash
 vagrant --version
 vagrant init alpine/alpine64
