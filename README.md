@@ -73,7 +73,7 @@ vagrant up
 
 &nbsp;
 
-## 3. Installation
+## Installation
 **1. Copy all files to your working directory**  
 ```
 git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
