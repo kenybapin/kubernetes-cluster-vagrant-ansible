@@ -7,7 +7,7 @@
 ___
 ## 1. Pre-requisites
 - Linux or Windows with WSL1 
-- VirtualBox 6.0
+- VirtualBox 6.0 (6.0 is compatible with vagrant)
 <br><br>
 ## 2. Setup
 ### Ansible 
@@ -48,20 +48,17 @@ wget https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
 sudo dpkg -i vagrant_2.2.9_x86_64.deb
 sudo apt-get -y install libvirt-dev
 ```
-***Windows (WSL1)***
+***Windows***
 - Install vagrant for windows https://www.vagrantup.com/downloads
-- export or add these commands to the bottom of your shell (~/.bashrc or ~/.zshrc)
+- for WSL users, export or add these commands to the bottom of your shell (~/.bashrc or ~/.zshrc)
 ```bash
 export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 ```
 - Then, reboot your machine.
 
-***Windows (WSL2)***
-- Unfortunately, WSL2 and Hyper-V are not compatible with Vagrant.<br>
-- Workaround : 
-  - Downgrade to virtualbox 6.0
-  - Disable WSL2 and revert to WSL1
+Note: Unfortunately, WSL2 and Hyper-V are not compatible with Vagrant.<br>
+you'll have to disable WSL2+ Hyper-V and revert your WSL distribution to WSL1
 
 **2. Check** : In your HOME dir, create a new VirtualBox VM
 ```bash
@@ -73,9 +70,8 @@ vagrant up
 ## 3. Kubernetes installation
 **1. Copy these manifests to your working Dir**  
 ```
-git clone https://github.com/kenybapin/Quick_K8s_setup.git
-cd Quick_K8s_setup/
-cp Vagrantfile master-playbook.yml node-playbook.yml /c/Users/keny/Documents/vagrant
+git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
+cp kubernetes-cluster-vagrant-ansible/* /c/Users/keny/Documents/vagrant
 ```
 **2. Build according to Vagrantfile (This may take a few minutes)**
 ```
