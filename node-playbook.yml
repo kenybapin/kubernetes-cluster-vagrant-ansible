@@ -1,5 +1,5 @@
 ---
-- hosts: k8snode
+- hosts: all
   become: true
   tasks:
   - name: Remove swapfile from /etc/fstab
