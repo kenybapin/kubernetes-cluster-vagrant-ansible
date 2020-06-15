@@ -6,8 +6,8 @@
 - Flannel CNI configured with Host-only adapter (VirtualBox) 
 ___
 ## 1. Pre-requisites
-- Linux or Windows with WSL 
-- VirtualBox
+- Linux or Windows with WSL1 
+- VirtualBox 6.0
 <br><br>
 ## 2. Setup
 ### Ansible 
@@ -40,19 +40,31 @@ ansible-playbook ansible-test.yml --connection=local
 ### Vagrant
 
 **1. Installation**
+
+***Linux***
+- get and install vagrant debian package https://www.vagrantup.com/downloads
 ```bash
-sudo pip install vagrant
+wget https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+sudo dpkg -i vagrant_2.2.9_x86_64.deb
 sudo apt-get -y install libvirt-dev
 ```
-*For Windows users with WSL, export or add these commands to the bottom of your shell (~/.bashrc or ~/.zshrc)*
+***Windows (WSL1)***
+- Install vagrant for windows https://www.vagrantup.com/downloads
+- export or add these commands to the bottom of your shell (~/.bashrc or ~/.zshrc)
 ```bash
 export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 ```
+- Then, reboot your machine.
+
+***Windows (WSL2)***
+unfortunately, WSL2 and Hyper-V are not compatible with Vagrant.<br>
+Workaround : 
+-- Downgrade to virtualbox 6.0
+-- Disable WSL2 and revert to WSL1
 
 **2. Check** : In your HOME dir, create a new VirtualBox VM
 ```bash
-cd /c/Users/keny
 vagrant --version
 vagrant init alpine/alpine64
 vagrant up
