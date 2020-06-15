@@ -15,7 +15,9 @@ ___
 <details>
   <summary>Click to expand!</summary>
 
+<br>
 Ansible
+
 ```
 1. Installation
 
@@ -42,7 +44,9 @@ $ ansible-playbook ansible-test.yml --connection=local
 # Note: Ansible might warn about no inventory file being present, but since you're using --connection=local, the localhost host should automatically work.
 ```
 
+<br>
 Vagrant
+
 ```
 1. Installation
 
