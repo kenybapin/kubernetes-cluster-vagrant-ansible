@@ -14,6 +14,7 @@ ___
 ## Setup notes 
 <details>
   <summary>Click to expand!</summary>
+  
 ### Ansible 
 **1. Installation**
 ```bash
