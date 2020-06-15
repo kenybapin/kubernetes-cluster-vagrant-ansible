@@ -42,7 +42,7 @@ ansible-playbook ansible-test.yml --connection=local
 **1. Installation**
 
 ***Linux***
-- get and install vagrant debian package https://www.vagrantup.com/downloads
+- Install vagrant debian package https://www.vagrantup.com/downloads
 ```bash
 wget https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
 sudo dpkg -i vagrant_2.2.9_x86_64.deb
