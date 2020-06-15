@@ -6,7 +6,7 @@
 - Flannel CNI configured with Host-only adapter (VirtualBox) 
 ___
 ## Pre-requisites
-- VirtualBox 6.0 (6.0 version is compatible with vagrant)
+- VirtualBox
 - Vagrant
 - Ansible
 <br><br>
