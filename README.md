@@ -7,66 +7,72 @@
 ___
 ## Pre-requisites
 - VirtualBox
-- Vagrant
 - Ansible
+- Vagrant
 <br><br>
 
-## Setup notes 
+## Pre-requisites notes 
 <details>
   <summary>Click to expand!</summary>
-  
-### Ansible 
-**1. Installation**
-```bash
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove
-sudo apt-get install ansible
-sudo apt-get install -y python-pip libssl-dev
+
+Ansible
 ```
-**2. Check**
-```bash
-which ansible
-ansible --version
-```
-- Create a new test playbook: ansible-test.yml
-```yaml
+1. Installation
+
+$ sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove
+$ sudo apt-get install ansible
+$ sudo apt-get install -y python-pip libssl-dev
+
+2. Check installation
+
+$ which ansible
+$ ansible --version
+
+  2.1 Create a new test playbook: ansible-test.yml
+
 ---
 - hosts: localhost
   tasks:
     - debug: msg="Ansible is working!"
+
+  2.2 Run the playbook
+
+$ ansible-playbook ansible-test.yml --connection=local
+
+# Note: Ansible might warn about no inventory file being present, but since you're using --connection=local, the localhost host should automatically work.
 ```
 
-- Run the playbook
-```bash
-ansible-playbook ansible-test.yml --connection=local
+Vagrant
 ```
-<sup>**Ansible might warn about no inventory file being present, but since you're using --connection=local, the localhost host should automatically work.**<sup><br><br>
+1. Installation
 
-### Vagrant
-**1. Installation**
+## Linux
 
-***Linux***
-- Install vagrant debian package https://www.vagrantup.com/downloads
-```bash
-wget https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
-sudo dpkg -i vagrant_2.2.9_x86_64.deb
-sudo apt-get -y install libvirt-dev
-```
-***Windows***
-- Install vagrant for windows https://www.vagrantup.com/downloads
-<br>For WSL1 users, export or add these commands to your shell (~/.bashrc or ~/.zshrc)
-```bash
-export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
-export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-```
-- Then, reboot your machine.
+# Install vagrant debian package https://www.vagrantup.com/downloads
 
-<sup>**Unfortunately, WSL2 is not yet compatible with Vagrant. You'll have to disable WSL2 + Hyper-V, then revert your WSL dist. to WSL1**<sup><br>
+$ wget https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+$ sudo dpkg -i vagrant_2.2.9_x86_64.deb
+$ sudo apt-get -y install libvirt-dev
 
-**2. Check** : Create a new VirtualBox VM
-```bash
-vagrant --version
-vagrant init alpine/alpine64
-vagrant up
+## Windows
+
+# Install vagrant for windows https://www.vagrantup.com/downloads
+# For WSL1 users, export or add these commands to your shell (~/.bashrc or ~/.zshrc)
+
+$ export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+$ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+
+# Then, reboot your machine.
+
+# Note: Unfortunately, WSL2 is not yet compatible with Vagrant. You'll have to disable WSL2 + Hyper-V, then revert your WSL dist. to WSL1
+
+2. Check installation
+
+Create a new VirtualBox VM
+
+$ vagrant --version
+$ vagrant init alpine/alpine64
+$ vagrant up
 ```
 
 </details>
