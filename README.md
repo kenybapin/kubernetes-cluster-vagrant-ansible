@@ -2,14 +2,18 @@
 **Build a ready-to-use Kubernetes cluster on Virtualbox with Ansible & Vagrant**
 
 **Features**  
-- K8s cluster : 2 VMs (master + worker)
+- K8s cluster : master + custom number of nodes (4 nodes by default) 
 - Flannel CNI configured with Host-only adapter (VirtualBox) 
 ___
-## 1. Pre-requisites
-- Linux or Windows with WSL1 
-- VirtualBox 6.0 (6.0 is compatible with vagrant)
+## Pre-requisites
+- VirtualBox 6.0 (6.0 version is compatible with vagrant)
+- Vagrant
+- Ansible
 <br><br>
-## 2. Setup
+
+## Setup notes 
+<details>
+  <summary>Click to expand!</summary>
 ### Ansible 
 **1. Installation**
 ```bash
@@ -22,8 +26,7 @@ sudo apt-get install -y python-pip libssl-dev
 which ansible
 ansible --version
 ```
-
-**3. Create a new test playbook:** ansible-test.yml
+- Create a new test playbook: ansible-test.yml
 ```yaml
 ---
 - hosts: localhost
@@ -31,7 +34,7 @@ ansible --version
     - debug: msg="Ansible is working!"
 ```
 
-4. **Run the playbook**
+- Run the playbook
 ```bash
 ansible-playbook ansible-test.yml --connection=local
 ```
@@ -39,7 +42,7 @@ ansible-playbook ansible-test.yml --connection=local
 
 ### Vagrant
 
-**1. Installation**
+**1. Installation **
 
 ***Linux***
 - Install vagrant debian package https://www.vagrantup.com/downloads
@@ -66,7 +69,11 @@ vagrant --version
 vagrant init alpine/alpine64
 vagrant up
 ```
+
+</details>
+
 &nbsp;
+
 ## 3. Build your kubernetes cluster
 **1. Copy these manifests to your working Dir**  
 ```
@@ -82,9 +89,12 @@ vagrant up
 ```
 vagrant ssh k8smaster
 
-vagrant@k8smaster:~$ kubectl get nodes
-NAME        STATUS   ROLES    AGE    VERSION
-k8smaster   Ready    master   112m   v1.18.2
-k8snode     Ready    <none>   109m   v1.18.2
+vagrant@k8smaster:~$ kubectl get nodes -owide
+NAME        STATUS   ROLES    AGE   VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
+k8smaster   Ready    master   25m   v1.18.3   192.168.56.200   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
+k8snode-1   Ready    <none>   23m   v1.18.3   192.168.56.101   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
+k8snode-2   Ready    <none>   19m   v1.18.3   192.168.56.102   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
+k8snode-3   Ready    <none>   16m   v1.18.3   192.168.56.103   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
+k8snode-4   Ready    <none>   13m   v1.18.3   192.168.56.104   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
 
 ```
