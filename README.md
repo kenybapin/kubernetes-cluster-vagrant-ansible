@@ -42,8 +42,7 @@ ansible-playbook ansible-test.yml --connection=local
 <sup>**Ansible might warn about no inventory file being present, but since you're using --connection=local, the localhost host should automatically work.**<sup><br><br>
 
 ### Vagrant
-
-**1. Installation **
+**1. Installation**
 
 ***Linux***
 - Install vagrant debian package https://www.vagrantup.com/downloads
