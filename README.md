@@ -2,7 +2,7 @@
 **Build a ready-to-use Kubernetes cluster on Virtualbox with Ansible & Vagrant**
 
 **Features**  
-- K8s cluster : master + custom number of nodes (4 nodes by default) 
+- K8s cluster : master + custom number of nodes
 - Flannel CNI configured with Host-only adapter (VirtualBox) 
 ___
 ## Pre-requisites
@@ -80,12 +80,20 @@ vagrant up
 git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
 cp kubernetes-cluster-vagrant-ansible/* /c/Users/keny/Documents/vagrant
 ```
-**2. Build according to Vagrantfile (This may take a few minutes)**
+**2. In Vagrantfile, Specify the number of nodes in that cluster (N value) **
+```
+# Nodes number
+N=4
+
+  (1..N).each do |i|
+	config.vm.define "k8snode-#{i}" do |k8snode|
+```
+**3. Build according to Vagrantfile (This may take a few minutes)**
 ```
 cd /c/Users/keny/Documents/vagrant
 vagrant up
 ```
-**3. Then, your K8s cluster is up and ready**
+**4. Then, your K8s cluster is up and ready**
 ```
 vagrant ssh k8smaster
 
