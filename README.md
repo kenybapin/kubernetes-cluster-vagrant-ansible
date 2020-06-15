@@ -79,7 +79,7 @@ vagrant up
 git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
 cp kubernetes-cluster-vagrant-ansible/* /c/Users/keny/vagrant
 ```
-**2. In Vagrantfile, Specify the number of nodes in that cluster (change N value)**
+**2. In Vagrantfile, specify the number of nodes (change N value)**
 ```
 # Nodes number
 N=4
