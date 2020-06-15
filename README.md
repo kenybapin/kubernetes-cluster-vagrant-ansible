@@ -74,19 +74,16 @@ vagrant up
 
 &nbsp;
 
-## 3. Build your kubernetes cluster
+## 3. Installation
 **1. Copy these manifests to your working Dir**  
 ```
 git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
 cp kubernetes-cluster-vagrant-ansible/* /c/Users/keny/Documents/vagrant
 ```
-**2. In Vagrantfile, Specify the number of nodes in that cluster (N value) **
+**2. In Vagrantfile, Specify the number of nodes in that cluster (change N value)**
 ```
 # Nodes number
 N=4
-
-  (1..N).each do |i|
-	config.vm.define "k8snode-#{i}" do |k8snode|
 ```
 **3. Build according to Vagrantfile (This may take a few minutes)**
 ```
@@ -95,7 +92,7 @@ vagrant up
 ```
 **4. Then, your K8s cluster is up and ready**
 ```
-vagrant ssh k8smaster
+$ vagrant ssh k8smaster
 
 vagrant@k8smaster:~$ kubectl get nodes -owide
 NAME        STATUS   ROLES    AGE   VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
@@ -104,5 +101,4 @@ k8snode-1   Ready    <none>   23m   v1.18.3   192.168.56.101   <none>        Ubu
 k8snode-2   Ready    <none>   19m   v1.18.3   192.168.56.102   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
 k8snode-3   Ready    <none>   16m   v1.18.3   192.168.56.103   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
 k8snode-4   Ready    <none>   13m   v1.18.3   192.168.56.104   <none>        Ubuntu 18.04.4 LTS   4.15.0-101-generic   docker://19.3.11
-
 ```
