@@ -74,10 +74,10 @@ vagrant up
 &nbsp;
 
 ## 3. Installation
-**1. Copy these manifests to your working Dir**  
+**1. Copy all files to your working directory**  
 ```
 git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
-cp kubernetes-cluster-vagrant-ansible/* /c/Users/keny/Documents/vagrant
+cp kubernetes-cluster-vagrant-ansible/* /c/Users/keny/vagrant
 ```
 **2. In Vagrantfile, Specify the number of nodes in that cluster (change N value)**
 ```
@@ -86,7 +86,7 @@ N=4
 ```
 **3. Build according to Vagrantfile (This may take a few minutes)**
 ```
-cd /c/Users/keny/Documents/vagrant
+cd /c/Users/keny/vagrant
 vagrant up
 ```
 **4. Then, your K8s cluster is up and ready**
