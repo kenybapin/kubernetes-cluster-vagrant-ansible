@@ -58,10 +58,10 @@ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 - Then, reboot your machine.
 
 ***Windows (WSL2)***
-unfortunately, WSL2 and Hyper-V are not compatible with Vagrant.<br>
-Workaround : 
--- Downgrade to virtualbox 6.0
--- Disable WSL2 and revert to WSL1
+- Unfortunately, WSL2 and Hyper-V are not compatible with Vagrant.<br>
+- Workaround : 
+  - Downgrade to virtualbox 6.0
+  - Disable WSL2 and revert to WSL1
 
 **2. Check** : In your HOME dir, create a new VirtualBox VM
 ```bash
