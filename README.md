@@ -46,7 +46,7 @@ k8snode-4   Ready    <none>   13m   v1.18.3   192.168.233.104   <none>        Ub
 
 &nbsp;
 
-## Add Dashboard with remote accees 
+## Deploy Kubernetes Dashboard with remote accees 
 > :warning: The following method is not recommended for production use
 
 ![alt text](https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible/blob/master/k8s_dashboard.jpg?raw=true)
@@ -62,7 +62,7 @@ vagrant@k8smaster:~$ kubectl create serviceaccount k8sadmin -n kubernetes-dashbo
 vagrant@k8smaster:~$ kubectl create clusterrolebinding k8sadmin --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:k8sadmin
 ```
 3. Open a new terminal, and set SSH tunneling for k8smaster
-```console
+```
 @yourPC:~$ ssh -L 8001:127.0.0.1:8001 vagrant@192.168.233.200
 ```
 4. Then on k8smaster, run kubectl proxy service
