@@ -46,26 +46,31 @@ k8snode-4   Ready    <none>   13m   v1.18.3   192.168.233.104   <none>        Ub
 
 &nbsp;
 
-## Set Kubernetes dashboard
+## Connecting to the dashboard remotely
 
-On k8smaster : 
 1. Deploy Kubernetes Dashboard
 ```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml
+vagrant@k8smaster:~$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml
 ```
-2. Patch the service with NodePort
+2. create service account
 ```
-kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
+vagrant@k8smaster:~$ kubectl create serviceaccount k8sadmin -n kubernetes-dashboard
+vagrant@k8smaster:~$ kubectl create clusterrolebinding k8sadmin --clusterrole=cluster-admin --serviceaccount=kubernetes-dashboard:k8sadmin
 ```
-3. Get NodePort number
+3. get service account token
 ```
-kubectl get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml | grep nodePort
-- nodePort: 32263
+vagrant@k8smaster:~$ kubectl get secret -n kubernetes-dashboard | grep k8sadmin | cut -d " " -f1 | xargs -n 1 | xargs kubectl get secret  -o 'jsonpath={.data.token}' -n kubernetes-dashboard | base64 --decode
 ```
-4. Access Dashboard (outside VM)
+4. Open a new terminal, and set SSH tunneling for k8smaster
+```console
+@yourPC:~$ ssh -L 8001:127.0.0.1:8001 vagrant@192.168.233.200
 ```
-https://192.168.233.200:32263
+5. Then on k8smaster, run kubectl proxy service
 ```
-
-
+vagrant@k8smaster:~$ kubectl proxy --address 0.0.0.0 --accept-hosts '.*'
+```
+6. access to the dashboard
+```
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+```
 
