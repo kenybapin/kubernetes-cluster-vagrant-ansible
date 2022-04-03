@@ -15,8 +15,9 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--cpus", "2"]
     end
 		k8smaster.vm.provision "shell", inline: <<-SHELL
+		  sudo snap install yq
 		  cd /tmp/ && wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
-			sed -i '/kube-subnet-mgr/a \        - --iface=eth1' /tmp/kube-flannel.yml
+		  yq '.spec.template.spec.containers[].args += ["--iface=eth1"]' < kube-flannel.yml >> custom-kube-flannel.yml
 		SHELL
 		k8smaster.vm.provision "ansible_local" do |ansible|
 			ansible.playbook = "master-playbook.yml"
