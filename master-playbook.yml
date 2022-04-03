@@ -77,7 +77,7 @@
 
   - name: Install flannel pod network
     become: false
-    command: kubectl create -f /tmp/kube-flannel.yml
+    command: kubectl create -f /tmp/custom-kube-flannel.yml
 
   - name: Generate join command
     command: kubeadm token create --print-join-command
