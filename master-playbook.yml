@@ -75,6 +75,13 @@
      - cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
      - chown vagrant:vagrant /home/vagrant/.kube/config
 
+  - name: Create custom flannel pod with host-only VM adapter
+    become: false
+    shell: |
+      sudo snap install yq
+      cd /tmp/ && wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+      yq '(select(.kind == "DaemonSet").spec.template.spec.containers[]|select(.name == "kube-flannel").args) += "--iface=eth1"' < /tmp/kube-flannel.yml >> /tmp/custom-kube-flannel.yml
+
   - name: Install flannel pod network
     become: false
     command: kubectl create -f /tmp/custom-kube-flannel.yml
