@@ -1,5 +1,5 @@
 # Build a ready-to-use K8s VM cluster
-![maxresdefault (2)](https://fotohosting.su/images/2024/01/31/a2e69c82-2234-4c32-bb84-cae31b869d47.jpg)
+![alt](https://fotohosting.su/images/2024/01/31/a2e69c82-2234-4c32-bb84-cae31b869d47.jpg)
 
 Features: 
 - K8s cluster : master + custom number of nodes
@@ -22,16 +22,19 @@ git clone https://github.com/kenybapin/kubernetes-cluster-vagrant-ansible.git
 ```
 > :warning: Cygwin/WSL1 users, git clone in windows dir (/mnt/c/...)
 <br>
+
 2. In Vagrantfile, specify the number of nodes (change N value)
 ```
 # Nodes number
 N=4
 ```
+
 3. Build according to Vagrantfile (This may take a few minutes)
 ```
 vagrant up
 ```
 4. Then, your K8s cluster is up and ready
+
 ```
 $ vagrant ssh k8smaster
 vagrant@k8smaster:~$ kubectl get nodes -owide
