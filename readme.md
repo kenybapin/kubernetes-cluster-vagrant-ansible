@@ -1,5 +1,4 @@
 # Build a ready-to-use K8s VM cluster
-![alt](https://fotohosting.su/images/2024/01/31/a2e69c82-2234-4c32-bb84-cae31b869d47.jpg)
 
 Features: 
 - K8s cluster : master + custom number of nodes
